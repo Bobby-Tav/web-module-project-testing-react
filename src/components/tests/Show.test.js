@@ -6,15 +6,29 @@ import Show from './../Show';
 
 const testShow = {
     //add in approprate test data structure here.
+    name:'',
+    image: '',
+    summary: '',
+    seasons:[
+        {id:0, name: "Season 1", episodes: []}, 
+        {id:1, name: "Season 2", episodes: []}, 
+        {id:2, name: "Season 3", episodes: []}, 
+        {id:3, name: "Season 4", episodes: []}
+      ]
 }
+const mockSelectedSeason = jest.fn();
+const mockHandleSelect =  jest.fn();
 
 test('renders testShow and no selected Season without errors', ()=>{
+    render(<Show show={testShow} selectedSeason='none' handleSelect ={mockHandleSelect} />)
 });
 
 test('renders Loading component when prop show is null', () => {
+    render(<Show show={null} />)
 });
 
 test('renders same number of options seasons are passed in', ()=>{
+    render(<Show show={testShow} selectedSeason={mockSelectedSeason} handleSelect ={mockHandleSelect} />)
 });
 
 test('handleSelect is called when an season is selected', () => {
